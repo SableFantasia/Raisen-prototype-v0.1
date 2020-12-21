@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class FireTester : MonoBehaviour
+{
+    [SerializeField] private Controls _controls;
+
+    void Awake() {
+        _controls.Player.Move.performed += _ => Move(_.ReadValue<Vector2>());
+    }
+    private void OnEnable() {
+        _controls.Enable();
+    }
+
+    private void OnDisable() {
+        _controls.Disable();
+    }
+
+    private void Move(Vector2 dir) {
+        Debug.Log("Fire");
+    }
+}
